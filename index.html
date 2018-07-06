@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Practice style sheet-->
     <link rel="stylesheet" href="Content/Style.css" />
@@ -16,12 +18,14 @@
 </head>
 
 <body>
+    <!-- Navigation -->
     <header>
         <div class="container">
             <h2 class="head"><strong><a href="Index.html">Jacob Finton</a></strong></h2>
             <nav>
                 <ul>
-                    <li><a href="work.html">Work</a></li>
+                    <li><a href="#work">Work</a></li>
+
                     <li><a href="About.html">About2</a></li>
                     <li><a href="About.html">About3</a></li>
                 </ul>
@@ -29,39 +33,102 @@
         </div>
     </header>
 
+    <!-- For Scrolling Function -->
+    <div id="page-wrap">
+        <!-- This is the Introduction-->
+        <div id="about">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="media">
+                        <img class="align-self-start mr-3" src="Images/Jacob.jpg" alt="Generic placeholder image" height="240" width="180">
+                        <div class="media-body">
+                            <div class="ide">
+                                <div class="ide1">
+                                    <h5 class="mt-0">Welcome to my page!</h5>
+                                    <p class="text">
+                                        &gt&nbsp Hello, I am currently studying Computer Science and Military Science at Marshall University and expect to graduate in Spring 2019.
+                                        I'm also contracted with the U.S. Army ROTC program where I will graduate college as a 2nd Lieutenant in the U.S. Army. My Intrests
+                                    </p>
+                                    <br />
+                                    <p>
+                                        &gt&nbsp My intrests include Programming, Mountain Biking, Backpacking and Video Games.
 
-    <!-- This is the Introduction-->
-    <div class="jumbotron">
-        <div class="container">
-            <div class="media">
-                <img class="align-self-start mr-3" src="Images/Jacob.jpg" alt="Generic placeholder image" height="240" width="180">
-                <div class="media-body">
-                    <h5 class="mt-0">Welcome to my page!</h5>
-                    <p> Hello, I'm a Computer Science major at Marshall University.</p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Work Page-->
+        <div id="work">
+            <p>
+                jaghasfsjhgafjkshagjkhfjkghajkhgjkahdhgjdhghagjhdjhg
+                dahghjkghdhgahdjkghdhgdshgkhadhgkadhghaehaihdivbdbdvasd
+                jdsjhadhjkhadsafsddhffhQEWSJHHIUqkjksKJHajskjfhiuahwknjkdnas
+                njkasjkgdsjkgkjasndgnnsdjhhebhakjbdjkbhudhavnlbkansoidieuahruidsfjhdsjfhj hai
+            </p>
+
+        </div>
+
     </div>
 
 
 
 
+    <!-- The Footer-->
     <footer>
         <div class="container">
             <hr>
         </div>
         <div class="container text-center">
-            <a href="https://github.com/Finton38" title="Find me on GitHub" class="button" ><i class="fa fa-github" style="font-size:36px"></i></a>
-            <a href="https://github.com/Finton38" title="Email me here" class="button" ><i class="fa fa-comments" style="font-size:36px"></i></a>
-             
+            <a href="https://github.com/Finton38" title="Find me on GitHub" class="button"><i class="fa fa-github" style="font-size:36px"></i></a>
+            <a href="mailto:Finton7@marshall.edu?Subject=Hello%20again" target="_top" title="Email me here" class="button"><i class="fa fa-comments" style="font-size:36px"></i></a>
+
 
         </div>
-        <p class="text-center">Jacob Finton © 2018</p>
+        <p class="text-center">Jacob Finton &copy 2018</p>
     </footer>
 
-
-
-
-
+    <script>
+        // Select all links with hashes
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function (event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                    &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function () {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+    </script>
 </body>
 </html>
