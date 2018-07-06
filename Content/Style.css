@@ -20,6 +20,15 @@ header {
         clear: both;
     }
 
+.foot a:link, a:visited {
+    color: #444;
+}
+
+.foot a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
 .head {
     float: left;
     padding: 10px 0;
@@ -116,11 +125,12 @@ nav a::before {
 }
 .ide1 {
     padding: 40px;
-    height: 430px;
+    height: 435px;
     margin: 0 auto;
     background: #383737;
 }
 .text {
-    overflow: hidden;
     height: auto;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    
 }

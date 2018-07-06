@@ -11,6 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Practice style sheet-->
     <link rel="stylesheet" href="Content/Style.css" />
@@ -45,15 +46,9 @@
                             <div class="ide">
                                 <div class="ide1">
                                     <h5 class="mt-0">Welcome to my page!</h5>
-                                    <p class="text">
-                                        &gt&nbsp Hello, I am currently studying Computer Science and Military Science at Marshall University and expect to graduate in Spring 2019.
-                                        I'm also contracted with the U.S. Army ROTC program where I will graduate college as a 2nd Lieutenant in the U.S. Army. My Intrests
-                                    </p>
+                                    <p class="text" id="text"></p>
                                     <br />
-                                    <p>
-                                        &gt&nbsp My intrests include Programming, Mountain Biking, Backpacking and Video Games.
-
-                                    </p>
+                                    <!--<p>&gt&nbsp </p>-->
                                 </div>
                             </div>
                         </div>
@@ -64,12 +59,11 @@
 
         <!-- Work Page-->
         <div id="work">
-            <p>
-                jaghasfsjhgafjkshagjkhfjkghajkhgjkahdhgjdhghagjhdjhg
-                dahghjkghdhgahdjkghdhgdshgkhadhgkadhghaehaihdivbdbdvasd
-                jdsjhadhjkhadsafsddhffhQEWSJHHIUqkjksKJHajskjfhiuahwknjkdnas
-                njkasjkgdsjkgkjasndgnnsdjhhebhakjbdjkbhudhavnlbkansoidieuahruidsfjhdsjfhj hai
-            </p>
+            <div class="jumbotron">
+                <div class="container">
+                    <p> Hello</p>
+                </div>
+            </div>
 
         </div>
 
@@ -79,7 +73,7 @@
 
 
     <!-- The Footer-->
-    <footer>
+    <footer class="foot">
         <div class="container">
             <hr>
         </div>
@@ -129,6 +123,48 @@
                     }
                 }
             });
+    </script>
+    <script>
+        // set up text to print, each item in array is new line
+        var aText = new Array(
+            "> Hello, I am currently studying Computer Science and Military Science at Marshall ",
+            "University and expect to graduate in Spring 2019. I am also contracted with the",
+            "U.S.Army ROTC program where I will graduate college as a 2nd Lieutenant in the U.S.Army.", 
+            "",
+            "> My intrests include Programming, Mountain Biking, Backpacking and Video Games."
+        );
+        var iSpeed = 50; // time delay of print out
+        var iIndex = 0; // start printing array at this posision
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialise text position
+        var sContents = ''; // initialise contents variable
+        var iRow; // initialise current row
+
+        function typewriter() {
+            sContents = ' ';
+            iRow = Math.max(0, iIndex - iScrollAt);
+            var destination = document.getElementById("text");
+
+            while (iRow < iIndex) {
+                sContents += aText[iRow++] + '<br />';
+            }
+            destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "|";
+            if (iTextPos++ == iArrLength) {
+                iTextPos = 0;
+                iIndex++;
+                if (iIndex != aText.length) {
+                    iArrLength = aText[iIndex].length;
+                    setTimeout("typewriter()", 500);
+                }
+            } else {
+                setTimeout("typewriter()", iSpeed);
+            }
+        }
+
+
+        typewriter();
     </script>
 </body>
 </html>
